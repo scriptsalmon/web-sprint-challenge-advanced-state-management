@@ -19,6 +19,21 @@ export const fetchSmurfs = () => {
     });
 }
 
+export const sendSmurfs = (smurf) => {
+    console.log('SENDSMURFS');
+    return (dispatch => {
+        dispatch(addSmurf(smurf))
+        axios.post(`http://localhost:3333/smurfs`, smurf)
+            .then(res => {
+                console.log(res.data);
+                dispatch(fetchSuccess(res.data))
+            })
+            .catch(err => {
+                dispatch(fetchFail(err));
+            })
+    })
+}
+
 export const fetchStart = () => {
     return ({type: FETCH_START});
 }
