@@ -1,13 +1,16 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from './../actions/index';
+// import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from './../actions/index';
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, ADD_SMURF } from '../actions';
+
 export const initialState = {
-    smurfs: [{
-        smurf: {
+    smurfs: [
+        {
+            id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
             name: "Jessie",
             position: "Mami",
             nickname: "Moonbeam",
             description: "A majestic being, identifiable easily by her sparkling eyes, glowing skin and flowing, golden-ruby hair. Her voice is said to have the ability to calm any ails and tame ferocious beasts."
         }
-    }],
+    ],
     isLoading: false,
     error: ''
 }
@@ -18,7 +21,7 @@ const reducer = (state = initialState, action) => {
             console.log("FETCH_START")
             return {
                 ...state,
-                smurfs: {},
+                smurfs: [],
                 isLoading: true,
                 error: ''
             }
@@ -26,16 +29,25 @@ const reducer = (state = initialState, action) => {
             console.log("FETCH_SUCCESS")
             return {
                 ...state,
-                smurfs: {},
+                smurfs: [],
                 isLoading: false,
                 error: ''
             }
         case FETCH_FAIL:
             return {
                 ...state,
-                smurfs: {},
+                smurfs: [],
                 isLoading: false,
                 error: action.payload
+            }
+        case ADD_SMURF:
+            const newSmurf = {
+                ...action.payload,
+                id: Date.now()
+            }
+            return {
+                ...state,
+                smurfs: [...state.smurfs, newSmurf]
             }
         default:
             return state;

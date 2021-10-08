@@ -11,13 +11,17 @@ import "./App.css";
 class App extends Component {
 
 componentDidMount(){
-  console.log("App mounts");
-  // fetchSmurfs();
-  fetchStart();
+  // console.log("App mounts", this.props);
+  fetchSmurfs();
 }
 
+handleClick = () => {
+  fetchStart();
+}
   render() {
-    console.log(this.props);
+    // console.log(this.props);
+    // const { smurfs, isLoading, error, fetchStart, fetchSmurfs } = this.props;
+
     if(this.isLoading) {
       return <h2>loading...</h2>
     }
