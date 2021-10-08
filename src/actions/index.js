@@ -4,18 +4,46 @@ export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
 
+export const fetchSmurfs = () => {
+    console.log("fetchSmurfs activates")
+    return (dispatch => {
+        dispatch(fetchStart());
+        axios.get(`http://localhost:3333/smurfs`)
+            .then(res => {
+                console.log(res);
+                // dispatch(fetchSuccess(res))
+            })
+            .catch(err => {
+                console.log(err);
+                // dispatch(fetchFail(err));
+            })
+    });
+}
+
+// export const fetchSmurfs = () => dispatch => {
+//     dispatch(fetchStart());
+//     console.log("axios calls");
+    
+//     axios.get("http://localhost:3333/smurfs")
+//         .then(res => {
+//             console.log(res);
+//             // dispatch(fetchSuccess(res))
+//         });
+// }
+
+
 export const fetchStart = () => {
-    console.log("fetchStart!")
-    return ({type: FETCH_START})
+    console.log("fetchStart activates")
+    return ({type: FETCH_START});
 }
 
 export const fetchSuccess = (smurf) => {
     console.log("fetchSuccess!")
-    return ({type: FETCH_SUCCESS, payload: smurf})
+    return ({type: FETCH_SUCCESS, payload: smurf});
 }
 
 export const fetchFail = (error) => {
-    return ({type: FETCH_FAIL, payload: error})
+    return ({type: FETCH_FAIL, payload: error});
 }
 
 //Task List:

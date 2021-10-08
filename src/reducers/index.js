@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from '../actions';
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from './../actions/index';
 export const initialState = {
     smurfs: [{
         smurf: {
@@ -12,24 +12,24 @@ export const initialState = {
     error: ''
 }
 
-const reducer = (state = initialState, action)=>{
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case FETCH_START:
+            console.log("FETCH_START")
             return {
                 ...state,
                 smurfs: {},
                 isLoading: true,
                 error: ''
             }
-
         case FETCH_SUCCESS:
+            console.log("FETCH_SUCCESS")
             return {
                 ...state,
                 smurfs: {},
                 isLoading: false,
                 error: ''
             }
-
         case FETCH_FAIL:
             return {
                 ...state,
