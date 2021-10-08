@@ -1,12 +1,42 @@
-
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL } from '../actions';
 export const initialState = {
-    smurfs: [],
+    smurfs: [{
+        smurf: {
+            name: "Jessie",
+            position: "Mami",
+            nickname: "Moonbeam",
+            description: "A majestic being, identifiable easily by her sparkling eyes, glowing skin and flowing, golden-ruby hair. Her voice is said to have the ability to calm any ails and tame ferocious beasts."
+        }
+    }],
     isLoading: false,
     error: ''
 }
 
 const reducer = (state = initialState, action)=>{
     switch(action.type) {
+        case FETCH_START:
+            return {
+                ...state,
+                smurfs: {},
+                isLoading: true,
+                error: ''
+            }
+
+        case FETCH_SUCCESS:
+            return {
+                ...state,
+                smurfs: {},
+                isLoading: false,
+                error: ''
+            }
+
+        case FETCH_FAIL:
+            return {
+                ...state,
+                smurfs: {},
+                isLoading: false,
+                error: action.payload
+            }
         default:
             return state;
     }

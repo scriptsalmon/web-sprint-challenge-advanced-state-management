@@ -8,6 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 class App extends Component {
+
+componentDidMount(){
+  console.log("yo mounted");
+}
+
   render() {
     // console.log(this.props);
     return (
