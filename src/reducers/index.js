@@ -6,7 +6,7 @@ export const initialState = {
         {
             id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
             name: "Jessie",
-            position: "Mami",
+            position: "Pussiwillow Pixie",
             nickname: "Moonbeam",
             description: "A majestic being, identifiable easily by her sparkling eyes, glowing skin and flowing, golden-ruby hair. Her voice is said to have the ability to calm any ails and tame ferocious beasts."
         }
