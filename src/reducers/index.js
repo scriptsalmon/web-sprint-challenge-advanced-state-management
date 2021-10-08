@@ -18,7 +18,6 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_START:
-            console.log("FETCH_START")
             return {
                 ...state,
                 smurfs: [],
@@ -26,10 +25,9 @@ const reducer = (state = initialState, action) => {
                 error: ''
             }
         case FETCH_SUCCESS:
-            console.log("FETCH_SUCCESS")
             return {
                 ...state,
-                smurfs: [],
+                smurfs: action.payload,
                 isLoading: false,
                 error: ''
             }

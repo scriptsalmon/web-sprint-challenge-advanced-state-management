@@ -7,39 +7,23 @@ export const ADD_SMURF = "ADD_SMURF";
 export const SET_ERROR = "SET_ERROR";
 
 export const fetchSmurfs = () => {
-    // console.log("fetchSmurfs activates")
     return (dispatch => {
         dispatch(fetchStart());
         axios.get(`http://localhost:3333/smurfs`)
             .then(res => {
-                console.log(res);
-                dispatch(fetchSuccess(res));
+                dispatch(fetchSuccess(res.data));
             })
             .catch(err => {
-                console.log(err);
                 dispatch(fetchFail(err));
             })
     });
 }
 
-// export const fetchSmurfs = () => dispatch => {
-//     dispatch(fetchStart());
-//     console.log("axios calls");
-    
-//     axios.get("http://localhost:3333/smurfs")
-//         .then(res => {
-//             console.log(res);
-//             // dispatch(fetchSuccess(res))
-//         });
-// }
-
 export const fetchStart = () => {
-    console.log("fetchStart activates")
     return ({type: FETCH_START});
 }
 
 export const fetchSuccess = (smurf) => {
-    console.log("fetchSuccess!")
     return ({type: FETCH_SUCCESS, payload: smurf});
 }
 

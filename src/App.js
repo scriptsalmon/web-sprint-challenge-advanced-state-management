@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
-import { fetchSmurfs, fetchStart, fetchSuccess } from './actions/index';
-import axios from 'axios';
+import { fetchSmurfs } from './actions/index';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
@@ -12,18 +11,10 @@ import "./App.css";
 class App extends Component {
 
 componentDidMount(){
-  // console.log("App mounts", this.props);
-  fetchSmurfs();
-  axios.get(`http://localhost:3333/smurfs`)
-   .then(res => {
-     console.log(res.data);
-     fetchSuccess(res.data);
-   })
+  this.props.fetchSmurfs();
 }
 
   render() {
-    // console.log(this.props);
-
     if(this.isLoading) {
       return <h2>loading...</h2>
     }
@@ -53,7 +44,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs, fetchStart, fetchSuccess })(App);
+export default connect(mapStateToProps, { fetchSmurfs })(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
